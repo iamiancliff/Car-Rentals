@@ -1,0 +1,32 @@
+{% extends 'customer/base.html' %}
+
+{% block content %}
+    {% if form.errors %}
+        <!-- Add any error handling code here -->
+    {% endif %}
+    <div class="container-fluid" style="height:500px; display: flex; align-items: center; justify-content: center;">
+    <div class="col-lg-4">
+        <form class="container" action="/Car_dealer/auth/" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <label>
+                    <input class="form-control" type="text" name="username" required>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <label>
+                    <input class="form-control" type="password" name="password" required>
+                </label>
+            </div>
+            <button class="btn btn-success" type="submit">Login</button>
+        </form>
+        <br>
+        <div class="container">
+            <a class="btn btn-danger" href="/Customer/register/">Register as Customer</a>
+            <a class="btn btn-teal" href="/">Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

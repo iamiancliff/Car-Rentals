@@ -1,0 +1,34 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div class="navbar navbar-expand-lg navbar-dark bg-black">
+    <a class="navbar-brand" href="#">Customer: {{ user.username }}</a>
+    <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/Customer/manage/">Manage</a>
+            </li>
+            <br><br>
+            <li class="nav-item">
+                <a class="nav-link" href="/Customer/logout/">Logout</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="container-fluid" style="height: 300px; display: flex; justify-content: center; align-items: center;">
+    <div class="container">
+        <div class="text-center">
+            <form class="row g-3" action="/Customer/search_results/" method="post">
+                {% csrf_token %}
+                <div class="col-md-6">
+                    <label for="city" class="form-label">Enter City Name:</label>
+                    <input type="text" class="form-control" id="city" name="city">
+                </div>
+                <div class="col-md-6 mt-3">
+                    <button type="submit" class="btn btn-success">Search Car</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

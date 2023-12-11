@@ -1,0 +1,53 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">Home</a>
+  <a class="navbar-brand" href="/Customer/login/">Login</a>
+</div>
+<div class="container-fluid" style="height: 300px; display: flex; justify-content: center; align-items: center;">
+    <div class="container">
+        <div class="text-center">
+            <h2><b>Registration Form</b></h2>
+        </div>
+        <form class="row g-3" action="/Customer/registration/" method="POST">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <label for="firstname" class="form-label">First Name:</label>
+                <input type="text" class="form-control" id="firstname" name="firstname">
+            </div>
+            <div class="col-md-6">
+                <label for="lastname" class="form-label">Last Name:</label>
+                <input type="text" class="form-control" id="lastname" name="lastname">
+            </div>
+            <div class="col-md-6">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="col-md-6">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email:</label>
+                <input type="text" class="form-control" id="email" name="email">
+            </div>
+            <div class="col-md-6">
+                <label for="mobile" class="form-label">Contact:</label>
+                <input type="text" class="form-control" id="mobile" name="mobile">
+            </div>
+            <div class="col-md-6">
+                <label for="city" class="form-label">City:</label>
+                <input type="text" class="form-control" id="city" name="city">
+            </div>
+            <div class="col-md-6">
+                <label for="pincode" class="form-label">Pincode:</label>
+                <input type="text" class="form-control" id="pincode" name="pincode">
+            </div>
+        </form>
+        <br>
+   <div class="col-12 mt-3">
+    <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+    </div>
+    </div>
+</div>
+{% endblock %}

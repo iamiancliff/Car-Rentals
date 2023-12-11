@@ -1,0 +1,33 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <a class="navbar-brand" href="#">SwiftWheels: {{ user.username }}</a>
+    <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/Customer/manage/">Manage</a>
+            </li>
+            </ul>
+        <br><br>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/Customer/logout/">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container text-center mt-4">
+    <div class="display-4">Welcome Traveller, You shall drive the car of your dreams!</div>
+</div>
+
+<div class="container-fluid text-center" style="height:500px; padding:20px;">
+    <img src="{% static 'images/Range.jpg' %}" alt="car" width="1200" height="1000">
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <a class="btn btn-danger btn-lg" href="/Customer/search/"><b>Search for Rental Cars</b></a>
+    </div>
+</div>
+
+{% endblock %}

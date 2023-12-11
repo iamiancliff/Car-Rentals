@@ -1,0 +1,64 @@
+{% extends 'car_dealer/base.html' %}
+{% block content %}
+<div class="container-fluid bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark container">
+    <a class="navbar-brand" href="#">Car Dealer Portal: {{user.username}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link btn btn-teal" href="/Car_dealer/logout/">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-teal" href="/Car_dealer/auth/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-teal" href="/Car_dealer/order_list/">Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-teal" href="/Car_dealer/manage_vehicles/">Vehicles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-teal" href="/Car_dealer/history/">Earnings</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container mt-4">
+  <h3 class="text-center"><b>Vehicle's Order List</b></h3>
+  <div class="p-3">
+    <table class="table table-striped table-bordered table-hover text-center">
+      <thead class="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>Color</th>
+          <th>Rental Amount</th>
+          <th>Days</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in order_list %}
+        <tr>
+          <td>{{ order.vehicle.car_name }}</td>
+          <td>{{ order.vehicle.color }}</td>
+          <td>${{ order.rent }}</td>
+          <td>{{ order.days }}</td>
+          <td>
+            <form action="/Car_dealer/complete/" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="id" value="{{ order.id }}">
+              <button type="submit" class="btn btn-indigo">Complete</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

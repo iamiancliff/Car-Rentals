@@ -1,0 +1,18 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+{% csrf_token %}
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">Home</a>
+  <a class="navbar-brand" href="/Customer/login/">Login</a>
+</nav>
+
+
+    <div class="text-center">
+        <p class="lead">
+            Registered Successfully!
+        </p>
+        <p class="lead">
+            Now go to the <a class="btn btn-teal" href="/Customer/login/">Login Page</a> and Login!
+        </p>
+    </div>
+{% endblock %}

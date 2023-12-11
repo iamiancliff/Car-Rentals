@@ -1,0 +1,57 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <a class="navbar-brand" href="#">Customer Portal: {{ user.username }}</a>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Customer/search/">Search Cars</a>
+                </li>
+                <br><br>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Customer/logout/">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h3 class="text-center"><b>Your Orders</b></h3>
+        <div class="table-responsive mt-4">
+            <table class="table table-striped table-bordered table-hover text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Car</th>
+                        <th>Days</th>
+                        <th>Rent</th>
+                        <th>Capacity</th>
+                        <th>Description</th>
+                        <th>Pincode</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in od %}
+                    <tr>
+                        <td>{{ order.vehicle.car_name }}</td>
+                        <td>{{ order.days }}</td>
+                        <td>${{ order.rent }}</td>
+                        <td>{{ order.vehicle.capacity }}</td>
+                        <td>{{ order.vehicle.description }}</td>
+                        <td>{{ order.vehicle.area.pincode }}</td>
+                        <td>
+                            <form action="/Customer/delete/" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="id" value="{{ order.id }}">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

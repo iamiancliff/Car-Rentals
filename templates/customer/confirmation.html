@@ -1,0 +1,35 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+  <a class="navbar-brand" href="#">Customer Portal: {{ user.username }}</a>
+  <div class="collapse navbar-collapse justify-content-end">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/Customer/search/">Search Cars</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Customer/manage/">Manage</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Customer/logout/">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid text-center" style="padding: 100px;">
+    <h2><b>Car: {{ vehicle.car_name }}</b></h2>
+    <form class="container" action="/Customer/confirmed/" method="post">
+        {% csrf_token %}
+        <h4><b>Price: Ksh{{ cost_per_day }} per day</b></h4>
+        <div class="form-group">
+            <label for="days">How many days?</label>
+            <input type="text" class="form-control" id="days" name="days" placeholder="2">
+        </div>
+        <button type="submit" class="btn btn-teal">Confirm My Order</button>
+        <input type="hidden" value="{{ vehicle.id }}" name="id">
+    </form>
+</div>
+
+{% endblock %}

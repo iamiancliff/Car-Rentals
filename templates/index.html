@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Car Rental System</title>
+    <link rel="stylesheet" href="{% static 'web/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <style>
+        body{
+            background-color: azure;
+
+        }
+        button{
+            background-color: seagreen;
+            color: white;
+        }
+        .custom-jumbotron {
+        background-color: seagreen;
+        color: white;
+        }
+        .custom-jumbotron h1{
+            color: azure;
+        }
+        footer {
+        background-color: black;
+        color: white;
+        padding: 20px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+        }
+        .container a{
+            color: seagreen;
+        }
+        .container4 a{
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-teal">
+    <div class="container">
+        <a class="navbar-brand text-white"  href="#"> <strong>SwiftWheels Car Rental System</strong></a>
+    </div>
+</nav>
+<br><br><br><br>
+<div class="container mt-5">
+    <div class="jumbotron text-center custom-jumbotron">
+        <h1 class="display-4">Welcome to SwiftWheels</h1>
+    </div>
+    <br><br><br>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form class="text-center" action="/Customer/login/" method="POST">{% csrf_token %}
+                <button class="btn btn-indigo btn-lg btn-block" type="submit">Customer Login</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form class="text-center" action="/Car_dealer/login/" method="POST">{% csrf_token %}
+                <button class="btn btn-indigo btn-lg btn-block" type="submit">Car Dealer Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br>
+<footer>
+    <div class="footer-content">
+         <!-- First column: Logo and slogan -->
+        <div>
+            <img src="{% static 'images/logoW.png' %}" alt="Logo" width="100" height="100">
+             <p>SwiftWheels - Beyond the Ordinary Drive</p>
+        </div>
+
+         <!-- Second column: Contact information -->
+            <div>
+                <h3>Contact Us</h3>
+                <p><strong>Phone:</strong> +25792156702</p>
+                <p><strong>Email:</strong> <a href="" class="footer-link">swiftwheels@gmail.com</a></p>
+            </div>
+
+         <!-- Third column: Social media links -->
+            <div class="container4">
+                <h3>Follow Us</h3>
+                 <a href="https://www.facebook.com/"> <i class="fa fa-facebook-official"> </i> </a>
+                 <a href="https://www.instagram.com/"> <i class="fa fa-instagram"> </i> </a>
+                 <a href="https://www.twitter.com/"> <i class="fa fa-twitter"> </i> </a>
+            </div>
+    </div>
+        <div id="scroll-Top">
+				<div class="return-to-top">
+					<i class="fa fa-angle-up " id="scroll-top"
+                       data-toggle="tooltip" data-placement="top" title=""
+                       data-original-title="Back to Top" aria-hidden="true"></i>
+				</div>
+            </div>
+
+    </footer>
+</body>
+</html>
+
